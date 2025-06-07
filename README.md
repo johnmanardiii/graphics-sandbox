@@ -3,6 +3,7 @@
 ## Dependencies
 * [CMake](https://cmake.org/download/) at least version 3.25
 * A compiler that supports C++20
+* Currently Linux only
 
 ## Installation
 
@@ -10,7 +11,21 @@ Clone using
 
 ``git clone --recurse-submodules https://github.com/johnmanardiii/graphics-sandbox.git``
 
-Then, from the project diretory run CMake
+``cd graphics-sandbox``
+
+Install graphics dependencies with:
+``./scripts/linux-setup.sh`` (TODO: will be OS-independent later)
+
+### CMake Steps:
+
+Create a binary directory, run the cmake configuration step, then build the binary:
+
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
 
 # TODO:
 * install and include GLFW and link it to the exe
