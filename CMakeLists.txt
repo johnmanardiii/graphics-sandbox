@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 # Set VCPKG paths depdening on OS
 set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg")
 if(WIN32)
@@ -31,6 +27,17 @@ set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
 # Actual Project
 project(GLFW_Test)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(MSVC)
+    message(FATAL_ERROR "MSVC Not supported yet, exiting...")
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
 add_executable(GLFW_Test src/glfw_hello_world.cpp)
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(GLFW_Test PRIVATE glfw)
