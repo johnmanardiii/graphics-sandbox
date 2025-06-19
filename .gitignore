@@ -33,3 +33,4 @@
 
 # Generated / Created Build Directories
 build-*/
+build/
