@@ -16,11 +16,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
-    add_compile_options(/W4)
-elseif(CMAKE_CXX_COMPILER STREQUAL "Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic)
+    add_compile_options(/W4 /WX /permissive-)
 else()
-    message(FATAL_ERROR "Only MSVC and Clang compilers currently supported")
+    message(FATAL_ERROR "Only MSVC compiler currently supported")
 endif()
 
 add_executable(GLFW_Test src/glfw_hello_world.cpp)

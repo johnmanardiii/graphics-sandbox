@@ -1,8 +1,6 @@
 function (ensure_vcpkg VCPKG_ROOT)
-    # Set VCPKG paths depdening on OS
-    
     if(WIN32)
-        set(VCPKG_EXECUTABLE "${VCPKG_ROOT}/vcpkg")
+        set(VCPKG_EXECUTABLE "${VCPKG_ROOT}/vcpkg.exe")
         set(VCPKG_BOOTSTRAP_SCRIPT "${VCPKG_ROOT}/bootstrap-vcpkg.bat")
     else()
         message(FATAL_ERROR "Project only configured for Windows! Exiting...")
