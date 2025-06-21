@@ -21,7 +21,11 @@ else()
     message(FATAL_ERROR "Only MSVC compiler currently supported")
 endif()
 
-add_executable(GLFW_Test src/glfw_hello_world.cpp)
+add_executable(GLFW_Test src/main.cpp)
 find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(GLFW_Test PRIVATE glfw)
+find_package(glad CONFIG REQUIRED)
+target_link_libraries(GLFW_Test PRIVATE 
+                                glfw
+                                glad::glad
+                                )
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GLFW_Test)
