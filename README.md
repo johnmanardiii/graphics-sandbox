@@ -2,10 +2,9 @@
 
 This repository is intended to be a clean (currently Windows/MSVC only) repository for basing my graphics projects off of. It uses vcpkg for dependencies, but vcpkg is included as a local git submodule in manifest mode, so the project doesn't rely on a global installation.
 
-## Dependencies
+## Windows Dependencies
 * [CMake](https://cmake.org/download/) at least version 3.25
 * A compiler that supports C++20
-* Windows
 
 ## Installation
 
@@ -26,3 +25,8 @@ cmake ..
 ```
 
 Then open the generated .sln file.
+
+### Tested on
+* Visual Studio
+* CLion
+* MSVC

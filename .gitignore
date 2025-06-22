@@ -34,3 +34,6 @@
 # Generated / Created Build Directories
 build-*/
 build/
+.idea/
+cmake-build-debug/
+.idea

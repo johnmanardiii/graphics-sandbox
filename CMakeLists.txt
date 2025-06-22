@@ -18,17 +18,19 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
     add_compile_options(/W4 /WX /permissive-)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-Wall -Wextra -Werror -pedantic)
 else()
-    message(FATAL_ERROR "Only MSVC compiler currently supported")
+    message(WARNING "Compiler is not explicitly supported, continue with caution (still building anyways :P)")
 endif()
 
 set(SOURCES
-    src/main.cpp
-    src/windowing/windowing.cpp
+        src/main.cpp
+        src/platform/platform.cpp
 )
 
-set(HEADERS 
-    src/windowing/windowing.hpp
+set(HEADERS
+        src/platform/platform.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
