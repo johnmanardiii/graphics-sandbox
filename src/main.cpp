@@ -1,10 +1,6 @@
 #define GLFW_INCLUDE_NONE
 #include "application/application.hpp"
 
-// todo: move these to an application file
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 int main()
 {
     Application app;

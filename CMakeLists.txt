@@ -33,6 +33,7 @@ set(SOURCES
 set(HEADERS
         src/application/application.hpp
         src/application/application.hpp
+        src/ui/imgui_renderer.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
