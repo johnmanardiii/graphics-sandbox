@@ -8,8 +8,9 @@ ensure_vcpkg(${VCPKG_ROOT})
 # Set CMake to use vcpkg's custom toolchain
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
-# Actual Project
-project(GLFW_Test)
+
+# Project Settings
+project(OpenGLSandbox)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -21,11 +22,25 @@ else()
     message(FATAL_ERROR "Only MSVC compiler currently supported")
 endif()
 
-add_executable(GLFW_Test src/main.cpp)
+set(SOURCES
+    src/main.cpp
+    src/windowing/windowing.cpp
+)
+
+set(HEADERS 
+    src/windowing/windowing.hpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+target_include_directories(${PROJECT_NAME} PRIVATE src)
+
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
-target_link_libraries(GLFW_Test PRIVATE 
-                                glfw
-                                glad::glad
-                                )
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GLFW_Test)
+find_package(imgui CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    glfw
+    glad::glad
+    imgui::imgui
+)
+
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT OpenGLSandbox)
