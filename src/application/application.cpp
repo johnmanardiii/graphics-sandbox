@@ -1,7 +1,7 @@
-#include "platform/platform.hpp"
+#include "application/application.hpp"
 #include <iostream>
 
-bool Platform::initialize(const int windowWidth, const int windowHeight, const char* windowTitle)
+bool Application::initialize(const int windowWidth, const int windowHeight, const char* windowTitle)
 {
     int glfwInitResult = glfwInit();
     if(glfwInitResult != GLFW_TRUE)
@@ -37,7 +37,19 @@ bool Platform::initialize(const int windowWidth, const int windowHeight, const c
     return true;
 }
 
-Platform::~Platform()
+void Application::run()
+{
+    while (!glfwWindowShouldClose(window))
+    {
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+}
+
+Application::~Application()
 {
     if (window)
     {

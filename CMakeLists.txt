@@ -26,11 +26,13 @@ endif()
 
 set(SOURCES
         src/main.cpp
-        src/platform/platform.cpp
+        src/application/application.cpp
+        src/application/application.cpp
 )
 
 set(HEADERS
-        src/platform/platform.hpp
+        src/application/application.hpp
+        src/application/application.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

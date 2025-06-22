@@ -1,5 +1,5 @@
 #define GLFW_INCLUDE_NONE
-#include "platform/platform.hpp"
+#include "application/application.hpp"
 
 // todo: move these to an application file
 #include <glad/glad.h>
@@ -7,21 +7,13 @@
 
 int main()
 {
-    Platform platform;
+    Application app;
 
-    if (!platform.initialize(1280, 720, "GLFW Window"))
+    if (!app.initialize(1280, 720, "GLFW Window"))
     {
         return -1;
     }
 
-    while (!glfwWindowShouldClose(platform.window))
-    {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(platform.window);
-        glfwPollEvents();
-    }
-
+    app.run();
     return 0;
 }
