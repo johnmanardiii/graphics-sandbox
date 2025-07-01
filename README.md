@@ -30,3 +30,10 @@ Then open the generated .sln file.
 * Visual Studio
 * CLion
 * MSVC
+
+# TODO next session:
+* move imgui setup to its own class
+* bring glm into this
+* get a triangle rendering and controlled via imgui
+* remove unecessary imgui code
+* play with imgui more
