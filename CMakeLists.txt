@@ -1,13 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
 
-set(VCPKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg")
-
-include(cmake/ensure_vcpkg.cmake)
-ensure_vcpkg(${VCPKG_ROOT})
-
-# Set CMake to use vcpkg's custom toolchain
-set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-
 
 # Project Settings
 project(OpenGLSandbox)
