@@ -17,11 +17,22 @@ else()
 endif()
 
 # Library Code (If it gets too long, move to cmake file)
+
+# glfw
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+
 add_subdirectory(external/glfw)
+
+# glad
+add_library(glad STATIC
+    /external/glad/src/glad.c
+)
+target_include_directories(glad PUBLIC
+    external/glad/include
+)
 
 # Project Code
 set(SOURCES
