@@ -1,6 +1,4 @@
 #pragma once
-#include <imgui.h>
-#include <glad/glad.h>  // here because glad wants to be included first
 #include <GLFW/glfw3.h>
 
 class Application

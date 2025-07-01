@@ -16,28 +16,29 @@ else()
     message(WARNING "Compiler is not explicitly supported, continue with caution (still building anyways :P)")
 endif()
 
+# Library Code (If it gets too long, move to cmake file)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+add_subdirectory(external/glfw)
+
+# Project Code
 set(SOURCES
         src/main.cpp
-        src/application/application.cpp
         src/application/application.cpp
 )
 
 set(HEADERS
         src/application/application.hpp
-        src/application/application.hpp
-        src/ui/imgui_renderer.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
-find_package(glfw3 CONFIG REQUIRED)
-find_package(glad CONFIG REQUIRED)
-find_package(imgui CONFIG REQUIRED)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     glfw
-    glad::glad
-    imgui::imgui
 )
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT OpenGLSandbox)
